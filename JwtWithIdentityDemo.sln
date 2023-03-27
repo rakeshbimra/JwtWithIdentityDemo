@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JwtWithIdentityDemo.WebApi", "JwtWithIdentityDemo.WebApi\JwtWithIdentityDemo.WebApi.csproj", "{1F7A19F0-3DC4-4088-92A1-CE91077FF715}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JwtWithIdentityDemo.WebApi", "JwtWithIdentityDemo.WebApi\JwtWithIdentityDemo.WebApi.csproj", "{1F7A19F0-3DC4-4088-92A1-CE91077FF715}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JwtWithIdentityDemo.Domain", "JwtWithIdentityDemo.Domain\JwtWithIdentityDemo.Domain.csproj", "{C476023A-41DC-4112-91BA-2F41EC7635B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JwtWithIdentityDemo.Infrastructure", "JwtWithIdentityDemo.Infrastructure\JwtWithIdentityDemo.Infrastructure.csproj", "{0DCED6E9-11E0-4359-8BCE-1C718A348E3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JwtWithIdentityDemo.Infrastructure", "JwtWithIdentityDemo.Infrastructure\JwtWithIdentityDemo.Infrastructure.csproj", "{0DCED6E9-11E0-4359-8BCE-1C718A348E3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JwtWithIdentityDemo.Application", "JwtWithIdentityDemo.Application\JwtWithIdentityDemo.Application.csproj", "{0AE6151C-244D-493C-86B2-A3467ED0CE5E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JwtWithIdentityDemo.Common", "JwtWithIdentityDemo.Common\JwtWithIdentityDemo.Common.csproj", "{DFABC417-A1B9-44C3-B5F8-F2BE0ABC4848}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JwtWithIdentityDemo.Domain", "JwtWithIdentityDemo.Domain\JwtWithIdentityDemo.Domain.csproj", "{4641C7CA-675B-4DCD-850E-739C23CCA4AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +23,22 @@ Global
 		{1F7A19F0-3DC4-4088-92A1-CE91077FF715}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F7A19F0-3DC4-4088-92A1-CE91077FF715}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F7A19F0-3DC4-4088-92A1-CE91077FF715}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C476023A-41DC-4112-91BA-2F41EC7635B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C476023A-41DC-4112-91BA-2F41EC7635B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C476023A-41DC-4112-91BA-2F41EC7635B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C476023A-41DC-4112-91BA-2F41EC7635B5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0DCED6E9-11E0-4359-8BCE-1C718A348E3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0DCED6E9-11E0-4359-8BCE-1C718A348E3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DCED6E9-11E0-4359-8BCE-1C718A348E3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DCED6E9-11E0-4359-8BCE-1C718A348E3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AE6151C-244D-493C-86B2-A3467ED0CE5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AE6151C-244D-493C-86B2-A3467ED0CE5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AE6151C-244D-493C-86B2-A3467ED0CE5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AE6151C-244D-493C-86B2-A3467ED0CE5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFABC417-A1B9-44C3-B5F8-F2BE0ABC4848}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFABC417-A1B9-44C3-B5F8-F2BE0ABC4848}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFABC417-A1B9-44C3-B5F8-F2BE0ABC4848}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFABC417-A1B9-44C3-B5F8-F2BE0ABC4848}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4641C7CA-675B-4DCD-850E-739C23CCA4AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4641C7CA-675B-4DCD-850E-739C23CCA4AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4641C7CA-675B-4DCD-850E-739C23CCA4AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4641C7CA-675B-4DCD-850E-739C23CCA4AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
