@@ -1,6 +1,5 @@
 using JwtWithIdentityDemo.Application.IoC;
-
-
+using JwtWithIdentityDemo.Infrastructure.IoC;
 
 var builder = WebApplication.CreateBuilder(args);
 {
@@ -11,6 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
+
+    builder.Services.AddInfrastructure(builder.Configuration);
 
 }
 
