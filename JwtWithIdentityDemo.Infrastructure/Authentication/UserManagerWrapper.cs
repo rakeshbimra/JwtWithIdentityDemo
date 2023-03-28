@@ -37,5 +37,9 @@ namespace JwtWithIdentityDemo.Infrastructure.Authentication
         {
             return await _userManager.GetRolesAsync(user);
         }
+        public async Task<IdentityResult> AddToRolesAsync(IdentityUser user, string role)
+        {
+            return await _userManager.AddToRoleAsync(user, role);
+        }
     }
 }

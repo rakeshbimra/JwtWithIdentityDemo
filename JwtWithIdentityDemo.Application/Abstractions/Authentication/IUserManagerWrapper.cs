@@ -13,5 +13,6 @@ namespace JwtWithIdentityDemo.Application.Abstractions.Authentication
         Task<IdentityUser> FindByNameAsync(string userName);
         Task<bool> CheckPasswordAsync(IdentityUser user, string password);
         Task<IList<string>> GetRolesAsync(IdentityUser user);
+        Task<IdentityResult> AddToRolesAsync(IdentityUser user, string role);
     }
 }

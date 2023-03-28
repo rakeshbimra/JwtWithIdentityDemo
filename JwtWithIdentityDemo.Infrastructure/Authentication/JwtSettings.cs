@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace JwtWithIdentityDemo.Infrastructure.Authentication
 {
-    public class JwtSetings
+    public class JwtSettings
     {
-        public const string SectionName = "JwtSetings";
+        public const string SectionName = "JwtSettings";
         public string Secret { get; init; } = null;
         public string Issuer { get; init; } = null;
         public string Audience { get; init; } = null;

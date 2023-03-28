@@ -14,9 +14,9 @@ namespace JwtWithIdentityDemo.Infrastructure.Authentication
 {
     public class JwtTokenGenerator : IJwtTokenGenerator
     {
-        private readonly JwtSetings _jwtSetingsOption;
+        private readonly JwtSettings _jwtSetingsOption;
 
-        public JwtTokenGenerator(IOptions<JwtSetings> jwtSetings)
+        public JwtTokenGenerator(IOptions<JwtSettings> jwtSetings)
         {
 
             _jwtSetingsOption = jwtSetings.Value;

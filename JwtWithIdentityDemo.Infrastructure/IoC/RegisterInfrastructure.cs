@@ -14,7 +14,7 @@ namespace JwtWithIdentityDemo.Infrastructure.IoC
         public static void AddInfrastructure(this IServiceCollection services,
             IConfiguration configuration)
         {
-            services.Configure<JwtSetings>(configuration.GetSection(JwtSetings.SectionName));
+            services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.SectionName));
             services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
             services.AddTransient<IUserManagerWrapper, UserManagerWrapper>();
 
