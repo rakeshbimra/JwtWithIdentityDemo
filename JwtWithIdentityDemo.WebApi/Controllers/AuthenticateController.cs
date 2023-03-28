@@ -1,5 +1,5 @@
 ﻿using JwtWithIdentityDemo.Application.Abstractions.Authentication;
-using JwtWithIdentityDemo.Application.Queries.Users;
+using JwtWithIdentityDemo.Application.Users.Queries;
 using JwtWithIdentityDemo.WebApi.Models.Users;
 using JwtWithIdentityDemo.WebApi.Responses;
 using MediatR;

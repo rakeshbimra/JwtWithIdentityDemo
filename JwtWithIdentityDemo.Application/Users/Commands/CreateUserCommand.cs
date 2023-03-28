@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JwtWithIdentityDemo.Application.Commands.Users
+namespace JwtWithIdentityDemo.Application.Users.Commands
 {
     public record CreateUserCommand(RegisterUserDto RegisterUser) : IRequest<IdentityResult>;
 }

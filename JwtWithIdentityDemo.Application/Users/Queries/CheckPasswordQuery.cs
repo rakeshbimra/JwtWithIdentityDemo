@@ -6,8 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JwtWithIdentityDemo.Application.Queries.Users
+namespace JwtWithIdentityDemo.Application.Users.Queries
 {
-    public record GetRolesQuery(IdentityUser IdentityUser) : IRequest<IList<string>>;
+    public record CheckPasswordQuery(IdentityUser User, string Password) : IRequest<bool>;
 
 }

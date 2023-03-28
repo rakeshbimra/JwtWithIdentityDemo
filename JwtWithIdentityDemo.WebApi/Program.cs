@@ -1,5 +1,8 @@
 using JwtWithIdentityDemo.Application.IoC;
 using JwtWithIdentityDemo.Infrastructure.IoC;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 {
@@ -12,7 +15,6 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.AddSwaggerGen();
 
     builder.Services.AddInfrastructure(builder.Configuration);
-
 }
 
 

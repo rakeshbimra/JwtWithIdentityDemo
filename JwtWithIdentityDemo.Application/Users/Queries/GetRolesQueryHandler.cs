@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JwtWithIdentityDemo.Application.Queries.Users
+namespace JwtWithIdentityDemo.Application.Users.Queries
 {
     public class GetRolesQueryHandler : IRequestHandler<GetRolesQuery, IList<string>>
     {

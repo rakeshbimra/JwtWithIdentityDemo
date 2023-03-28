@@ -1,5 +1,6 @@
-﻿using JwtWithIdentityDemo.Application.Commands.Users;
-using JwtWithIdentityDemo.Application.Queries.Users;
+﻿using JwtWithIdentityDemo.Application.Users.Commands;
+using JwtWithIdentityDemo.Application.Users.Queries;
+using JwtWithIdentityDemo.Application.WeatherForecasts.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -21,6 +22,7 @@ namespace JwtWithIdentityDemo.Application.IoC
             services.AddScoped<IRequestHandler<CheckPasswordQuery, bool>, CheckPasswordQueryHandler>();
             services.AddScoped<IRequestHandler<FindUserByNameQuery, IdentityUser>, FindUserByNameQueryHandler>();
             services.AddScoped<IRequestHandler<GetRolesQuery, IList<string>>, GetRolesQueryHandler>();
+            services.AddScoped<IRequestHandler<GetWeatherForecastsQuery,IEnumerable<WeatherForecast>>, GetWeatherForecastsQueryHandler>();
 
         }
     }

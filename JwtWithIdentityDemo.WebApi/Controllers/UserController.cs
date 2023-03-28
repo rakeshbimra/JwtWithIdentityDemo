@@ -1,6 +1,6 @@
-﻿using JwtWithIdentityDemo.Application.Commands.Users;
-using JwtWithIdentityDemo.Application.Dtos;
-using JwtWithIdentityDemo.Application.Queries.Users;
+﻿using JwtWithIdentityDemo.Application.Dtos;
+using JwtWithIdentityDemo.Application.Users.Commands;
+using JwtWithIdentityDemo.Application.Users.Queries;
 using JwtWithIdentityDemo.WebApi.Models.Users;
 using JwtWithIdentityDemo.WebApi.Responses;
 using MediatR;
