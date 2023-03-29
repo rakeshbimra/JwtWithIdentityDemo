@@ -2,7 +2,6 @@
 using JwtWithIdentityDemo.Application.Users.Queries;
 using JwtWithIdentityDemo.WebApi.Controllers;
 using JwtWithIdentityDemo.WebApi.Models.Users;
-using JwtWithIdentityDemo.WebApi.Tests.TestHelpers;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -32,7 +31,7 @@ namespace JwtWithIdentityDemo.WebApi.Tests.Controllers
         }
 
         [TestMethod]
-        public async Task Login_ValidCredentials_ReturnsToken()
+        public async Task Login_Valid_Credentials_Returns_Token()
         {
             // Arrange
             var username = "testuser";
@@ -69,7 +68,7 @@ namespace JwtWithIdentityDemo.WebApi.Tests.Controllers
 
 
         [TestMethod]
-        public async Task Login_InvalidCredentials_ReturnsUnauthorized()
+        public async Task Login_Invalid_Credentials_Returns_Unauthorized()
         {
             // Arrange
             var username = "testuser";
