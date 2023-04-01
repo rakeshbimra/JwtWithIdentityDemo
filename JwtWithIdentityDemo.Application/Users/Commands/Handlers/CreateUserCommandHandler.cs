@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JwtWithIdentityDemo.Application.Users.Commands
+namespace JwtWithIdentityDemo.Application.Users.Commands.Handlers
 {
     public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, IdentityResult>
     {
@@ -21,14 +21,7 @@ namespace JwtWithIdentityDemo.Application.Users.Commands
 
         public async Task<IdentityResult> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
-            var user = new IdentityUser
-            {
-                UserName = request.RegisterUser.UserName,
-                SecurityStamp = Guid.NewGuid().ToString(),
-                Email = request.RegisterUser.Email
-            };
-
-            var result = await _userManager.CreateUserAsync(user, request.RegisterUser.Password);
+            var result = await _userManager.CreateUserAsync(request.IdentityUser, request.Password);
 
             return result;
         }

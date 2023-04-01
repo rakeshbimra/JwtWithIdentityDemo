@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JwtWithIdentityDemo.Application.Users.Queries
+namespace JwtWithIdentityDemo.Application.Users.Queries.Handlers
 {
     public class CheckPasswordQueryHandler : IRequestHandler<CheckPasswordQuery, bool>
     {

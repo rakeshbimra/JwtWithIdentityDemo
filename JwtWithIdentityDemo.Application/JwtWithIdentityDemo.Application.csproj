@@ -16,4 +16,8 @@
     <Folder Include="WeatherForecasts\Commands\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\JwtWithIdentityDemo.Common\JwtWithIdentityDemo.Common.csproj" />
+  </ItemGroup>
+
 </Project>

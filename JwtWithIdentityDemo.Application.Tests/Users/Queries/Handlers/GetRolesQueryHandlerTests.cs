@@ -1,5 +1,6 @@
 ﻿using JwtWithIdentityDemo.Application.Abstractions.Authentication;
 using JwtWithIdentityDemo.Application.Users.Queries;
+using JwtWithIdentityDemo.Application.Users.Queries.Handlers;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -10,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JwtWithIdentityDemo.Application.Tests.Users.Queries
+namespace JwtWithIdentityDemo.Application.Tests.Users.Queries.Handlers
 {
     [TestClass]
     public class GetRolesQueryHandlerTests

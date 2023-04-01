@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 namespace JwtWithIdentityDemo.Application.Users.Commands
 {
-    public record CreateUserCommand(IdentityUser IdentityUser, string Password) : IRequest<IdentityResult>;
+    public record CreateRoleCommand(IdentityRole IdentityRole) : IRequest<IdentityResult>;
 }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JwtWithIdentityDemo.Application.WeatherForecasts.Queries
+namespace JwtWithIdentityDemo.Application.WeatherForecasts.Queries.Handlers
 {
     public class GetWeatherForecastsQueryHandler : IRequestHandler<GetWeatherForecastsQuery, IEnumerable<WeatherForecast>>
     {

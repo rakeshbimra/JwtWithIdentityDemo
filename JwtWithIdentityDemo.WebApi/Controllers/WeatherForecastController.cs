@@ -1,4 +1,6 @@
 ﻿using JwtWithIdentityDemo.Application.WeatherForecasts.Queries;
+using JwtWithIdentityDemo.Common.Constants;
+using JwtWithIdentityDemo.WebApi.Responses;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -6,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace JwtWithIdentityDemo.WebApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class WeatherForecastController : ControllerBase
@@ -19,9 +22,19 @@ namespace JwtWithIdentityDemo.WebApi.Controllers
 
         [Authorize]
         [HttpGet]
-        public async Task<IEnumerable<WeatherForecast>> Get()
+        public async Task<IActionResult> Get()
         {
-            return await _mediator.Send(new GetWeatherForecastsQuery());
+            if (!User.Identity.IsAuthenticated)
+            {
+                return new UnauthorizedResponse();
+            }
+
+            var result = await _mediator.Send(new GetWeatherForecastsQuery());
+
+            return new SuccessResponse<IEnumerable<WeatherForecast>>()
+            {
+                Data = result,
+            };
         }
     }
 }

@@ -1,6 +1,8 @@
-﻿using JwtWithIdentityDemo.Application.Abstractions.Authentication;
+﻿using FluentValidation;
+using JwtWithIdentityDemo.Application.Abstractions.Authentication;
 using JwtWithIdentityDemo.Application.Users.Queries;
 using JwtWithIdentityDemo.WebApi.Models.Users;
+using JwtWithIdentityDemo.WebApi.Models.Users.Validators;
 using JwtWithIdentityDemo.WebApi.Responses;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -15,33 +17,64 @@ namespace JwtWithIdentityDemo.WebApi.Controllers
     [ApiController]
     public class AuthenticateController : ControllerBase
     {
+        private readonly ILogger<AuthenticateController> _logger;
         private readonly IMediator _mediator;
         private readonly IJwtTokenGenerator _jwtTokenGenerator;
-        public AuthenticateController(IMediator mediator,
-            IJwtTokenGenerator jwtTokenGenerator)
+        private readonly IValidator<LoginModel> _loginValidator;
+
+        public AuthenticateController(ILogger<AuthenticateController> logger,
+            IMediator mediator,
+            IJwtTokenGenerator jwtTokenGenerator,
+            IValidator<LoginModel> loginValidator)
         {
+            _logger = logger;
             _jwtTokenGenerator = jwtTokenGenerator;
             _mediator = mediator;
+            _loginValidator = loginValidator;
         }
 
         [HttpPost]
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
-            var user = await _mediator.Send(new FindUserByNameQuery(model.Username));
-
-            if (user != null && await _mediator.Send(new CheckPasswordQuery(user, model.Password)))
+            try
             {
-                var userRoles = await _mediator.Send(new GetRolesQuery(user));
+                var validationResult = await _loginValidator.ValidateAsync(model);
 
-                var (token, expires) = _jwtTokenGenerator.GenerateToken(Guid.Parse(user.Id), user.UserName, userRoles);
+                if (!validationResult.IsValid)
+                {
+                    return new BadRequestResponse
+                    {
+                        Errors = validationResult.Errors
+                                .GroupBy(e => e.PropertyName)
+                                .ToDictionary(g => g.Key, g => g.Select(e => e.ErrorMessage).ToList())
+                    }; ;
+                }
 
-                return Ok(new { token, expires });
+                var user = await _mediator.Send(new FindUserByNameQuery(model.Username));
+
+                if (user != null && await _mediator.Send(new CheckPasswordQuery(user, model.Password)))
+                {
+                    var userRoles = await _mediator.Send(new GetRolesQuery(user));
+
+                    var (token, expires) = _jwtTokenGenerator.GenerateToken(Guid.Parse(user.Id), user.UserName, userRoles);
+
+                    return Ok(new { token, expires });
+                }
+
+                else
+                {
+                    return new UnauthorizedResponse
+                    {
+                        Message = $"Authentication failed; invalid credentails"
+                    };
+                }
             }
-
-            else
+            catch (Exception ex)
             {
-                return Unauthorized();
+                _logger.LogError(ex, "An error occurred while attempting to log in user {Username}", model.Username);
+
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
     }

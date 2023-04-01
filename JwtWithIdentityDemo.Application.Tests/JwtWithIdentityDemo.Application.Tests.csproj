@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Users\Commands\" />
+    <Folder Include="Users\Commands\Handlers\" />
   </ItemGroup>
 
   <ItemGroup>

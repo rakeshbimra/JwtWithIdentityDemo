@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using JwtWithIdentityDemo.Infrastructure.Authentication.IoC;
 
 namespace JwtWithIdentityDemo.Infrastructure.IoC
 {
@@ -15,36 +16,7 @@ namespace JwtWithIdentityDemo.Infrastructure.IoC
         public static void AddInfrastructure(this IServiceCollection services,
             IConfiguration configuration)
         {
-            services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.SectionName));
-            services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
-            services.AddTransient<IUserManagerWrapper, UserManagerWrapper>();
-
-            // For Identity
-            services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
-
-            // Adding Authentication
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(options =>
-            {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = "JwtTokenWithIdentity",
-                    ValidAudience = "JwtTokenWithIdentity",
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("super-secret-key"))
-                };
-            });
-
-            services.AddScoped<UserManager<IdentityUser>>();
+            services.AddInfrastructureAuthentication(configuration);
 
             // For Entity Framework
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -58,6 +30,7 @@ namespace JwtWithIdentityDemo.Infrastructure.IoC
                 ServiceLifetime.Transient
             );
 
+            
         }
 
     }

@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\JwtWithIdentityDemo.Application\JwtWithIdentityDemo.Application.csproj" />
+    <ProjectReference Include="..\JwtWithIdentityDemo.Common\JwtWithIdentityDemo.Common.csproj" />
     <ProjectReference Include="..\JwtWithIdentityDemo.Infrastructure\JwtWithIdentityDemo.Infrastructure.csproj" />
   </ItemGroup>
 

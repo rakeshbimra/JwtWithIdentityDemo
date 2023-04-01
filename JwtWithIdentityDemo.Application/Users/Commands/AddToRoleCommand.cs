@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using JwtWithIdentityDemo.Common.Constants;
+using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -8,5 +9,6 @@ using System.Threading.Tasks;
 
 namespace JwtWithIdentityDemo.Application.Users.Commands
 {
-    public record CreateUserCommand(IdentityUser IdentityUser, string Password) : IRequest<IdentityResult>;
+    public record AddToRoleCommand(IdentityUser IdentityUser, string UserRole) : IRequest<IdentityResult>;
+
 }
