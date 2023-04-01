@@ -8,6 +8,6 @@ namespace JwtWithIdentityDemo.Application.Abstractions.Authentication
 {
     public interface IJwtTokenGenerator
     {
-        (string token, DateTime expires) GenerateToken(Guid userId, string userName, IList<string> userRoles);
+        (string access_token, string token_type, DateTime expires_in) GenerateToken(Guid userId, string userName, IList<string> userRoles);
     }
 }

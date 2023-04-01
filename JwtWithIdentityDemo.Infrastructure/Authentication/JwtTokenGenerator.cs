@@ -22,7 +22,7 @@ namespace JwtWithIdentityDemo.Infrastructure.Authentication
             _jwtSetingsOption = jwtSetings.Value;
 
         }
-        public (string token, DateTime expires) GenerateToken(Guid userId, string userName, IList<string> userRoles)
+        public (string access_token, string token_type, DateTime expires_in) GenerateToken(Guid userId, string userName, IList<string> userRoles)
         {
             var signingCredentials = new SigningCredentials(
                 new SymmetricSecurityKey(
@@ -49,7 +49,7 @@ namespace JwtWithIdentityDemo.Infrastructure.Authentication
                 claims: claims,
                 signingCredentials: signingCredentials);
 
-            return (new JwtSecurityTokenHandler().WriteToken(securityToken), securityToken.ValidTo);
+            return (new JwtSecurityTokenHandler().WriteToken(securityToken), "Bearer", securityToken.ValidTo);
         }
     }
 }

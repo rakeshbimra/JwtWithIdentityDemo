@@ -57,9 +57,9 @@ namespace JwtWithIdentityDemo.WebApi.Controllers
                 {
                     var userRoles = await _mediator.Send(new GetRolesQuery(user));
 
-                    var (token, expires) = _jwtTokenGenerator.GenerateToken(Guid.Parse(user.Id), user.UserName, userRoles);
+                    var (access_token, token_type, expires_in) = _jwtTokenGenerator.GenerateToken(Guid.Parse(user.Id), user.UserName, userRoles);
 
-                    return Ok(new { token, expires });
+                    return Ok(new { access_token, token_type, expires_in });
                 }
 
                 else
