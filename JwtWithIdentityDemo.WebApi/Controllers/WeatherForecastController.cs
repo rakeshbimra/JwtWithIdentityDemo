@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace JwtWithIdentityDemo.WebApi.Controllers
 {
-    [Authorize]
+    
     [Route("api/[controller]")]
     [ApiController]
     public class WeatherForecastController : ControllerBase
@@ -20,7 +20,7 @@ namespace JwtWithIdentityDemo.WebApi.Controllers
             _mediator = mediator;
         }
 
-        [Authorize]
+        [Authorize(Roles =UserRoles.Admin)]
         [HttpGet]
         public async Task<IActionResult> Get()
         {
